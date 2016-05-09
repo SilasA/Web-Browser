@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Web_Browser</RootNamespace>
     <AssemblyName>Web Browser</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,21 +47,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bookmark.cs">
+    <Compile Include="Forms\Bookmark.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Bookmark.Designer.cs">
+    <Compile Include="Forms\Bookmark.Designer.cs">
       <DependentUpon>Bookmark.cs</DependentUpon>
     </Compile>
-    <Compile Include="BookmarkHandler.cs" />
-    <Compile Include="FileHandler.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="src\BookmarkHandler.cs" />
+    <Compile Include="Forms\BookmarkManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\BookmarkManager.Designer.cs">
+      <DependentUpon>BookmarkManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\FileHandler.cs" />
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HistoryTracker.cs" />
+    <Compile Include="src\HistoryTracker.cs" />
+    <Compile Include="src\Logger.cs" />
     <Compile Include="Preferences.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,10 +77,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Bookmark.resx">
+    <EmbeddedResource Include="Forms\Bookmark.resx">
       <DependentUpon>Bookmark.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\BookmarkManager.resx">
+      <DependentUpon>BookmarkManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preferences.resx">
@@ -86,6 +97,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

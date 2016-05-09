@@ -38,11 +38,9 @@ namespace Web_Browser
         /// </summary>
         public static void ClearHistory()
         {
-            urlHistory = new List<string>();
+            urlHistory.Clear();
             currentIdx = 0;
         }
-
-
-
     }
 }
+;

@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 // TODOs:
 //  -Forward & back buttons
-//  -Complete history
-//  -Bookmarks
 //  -More preferences
 //
 
@@ -23,6 +21,7 @@ namespace Web_Browser
         FileHandler _persistance;
         BookmarkHandler _bookmarkhandler;
         HistoryTracker _historytracker;
+        Logger _logger;
 
         string _currentUrl;
 
@@ -33,11 +32,15 @@ namespace Web_Browser
         Bookmark _BookmarkForm;
         #endregion
 
+        /// <summary>
+        /// Initializes the program and all utilities and handlers.
+        /// </summary>
         public Browser()
         {
             InitializeComponent();
             _persistance = new FileHandler();
             _PreferencesForm = new Preferences();
+            _logger = new Logger("");
         }
 
         /// <summary>

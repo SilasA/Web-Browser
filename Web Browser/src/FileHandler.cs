@@ -58,7 +58,7 @@ namespace Web_Browser
         {
             SetData();
         }
-        #endregion-
+        #endregion
 
         /// <summary>
         /// Acquired data from the preferences file for the application to use.
