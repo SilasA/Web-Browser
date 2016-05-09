@@ -69,10 +69,10 @@
     </Compile>
     <Compile Include="src\HistoryTracker.cs" />
     <Compile Include="src\Logger.cs" />
-    <Compile Include="Preferences.cs">
+    <Compile Include="Forms\Preferences.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Preferences.Designer.cs">
+    <Compile Include="Forms\Preferences.Designer.cs">
       <DependentUpon>Preferences.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -86,7 +86,7 @@
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Preferences.resx">
+    <EmbeddedResource Include="Forms\Preferences.resx">
       <DependentUpon>Preferences.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
