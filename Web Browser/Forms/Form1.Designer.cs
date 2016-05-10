@@ -30,8 +30,11 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.homePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addBookmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookmarkManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.txtURL = new System.Windows.Forms.TextBox();
@@ -40,9 +43,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.pbLoaded = new System.Windows.Forms.ToolStripProgressBar();
             this.slLoaded = new System.Windows.Forms.ToolStripStatusLabel();
-            this.homePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addBookmarkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bookmarkManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -68,10 +68,17 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // homePageToolStripMenuItem
+            // 
+            this.homePageToolStripMenuItem.Name = "homePageToolStripMenuItem";
+            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.homePageToolStripMenuItem.Text = "Home Page";
+            this.homePageToolStripMenuItem.Click += new System.EventHandler(this.homePageToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
@@ -85,10 +92,24 @@
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
+            // addBookmarkToolStripMenuItem
+            // 
+            this.addBookmarkToolStripMenuItem.Name = "addBookmarkToolStripMenuItem";
+            this.addBookmarkToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.addBookmarkToolStripMenuItem.Text = "Add Bookmark";
+            this.addBookmarkToolStripMenuItem.Click += new System.EventHandler(this.addBookmarkToolStripMenuItem_Click);
+            // 
+            // bookmarkManagerToolStripMenuItem
+            // 
+            this.bookmarkManagerToolStripMenuItem.Name = "bookmarkManagerToolStripMenuItem";
+            this.bookmarkManagerToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.bookmarkManagerToolStripMenuItem.Text = "Bookmark Manager";
+            this.bookmarkManagerToolStripMenuItem.Click += new System.EventHandler(this.bookmarkManagerToolStripMenuItem_Click);
+            // 
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             this.preferencesToolStripMenuItem.Click += new System.EventHandler(this.preferencesToolStripMenuItem_Click);
             // 
@@ -157,26 +178,6 @@
             this.slLoaded.Size = new System.Drawing.Size(118, 17);
             this.slLoaded.Text = "toolStripStatusLabel1";
             // 
-            // homePageToolStripMenuItem
-            // 
-            this.homePageToolStripMenuItem.Name = "homePageToolStripMenuItem";
-            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.homePageToolStripMenuItem.Text = "Home Page";
-            this.homePageToolStripMenuItem.Click += new System.EventHandler(this.homePageToolStripMenuItem_Click);
-            // 
-            // addBookmarkToolStripMenuItem
-            // 
-            this.addBookmarkToolStripMenuItem.Name = "addBookmarkToolStripMenuItem";
-            this.addBookmarkToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.addBookmarkToolStripMenuItem.Text = "Add Bookmark";
-            this.addBookmarkToolStripMenuItem.Click += new System.EventHandler(this.addBookmarkToolStripMenuItem_Click);
-            // 
-            // bookmarkManagerToolStripMenuItem
-            // 
-            this.bookmarkManagerToolStripMenuItem.Name = "bookmarkManagerToolStripMenuItem";
-            this.bookmarkManagerToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.bookmarkManagerToolStripMenuItem.Text = "Bookmark Manager";
-            // 
             // Browser
             // 
             this.AcceptButton = this.btnNavigate;
@@ -190,7 +191,10 @@
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "Browser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Browser";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Browser_FormClosed);
             this.Load += new System.EventHandler(this.Browser_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

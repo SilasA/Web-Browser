@@ -25,12 +25,11 @@ namespace Web_Browser
         }
 
         /// <summary>
-        /// Writes a final log and closes the stream.
+        /// Writes the final log before the program ends.
         /// </summary>
-        public ~Logger()
+        public static void WriteFinalLog()
         {
             WriteLog("Program End", "LOG");
-            log.Close();
         }
 
         /// <summary>
@@ -38,7 +37,7 @@ namespace Web_Browser
         /// Method will write date, time, and tag without input.
         /// </summary>
         /// <param name="content"> Content of the log </param>
-        static void WriteLog(string content)
+        public static void WriteLog(string content)
         {
             log.WriteLine("[" + DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm:ss") + "]" 
                 + "[GEN]: " + content);
@@ -50,7 +49,7 @@ namespace Web_Browser
         /// </summary>
         /// <param name="content"> Content of the log </param>
         /// <param name="tag"> Log tag format: [LOG] </param>
-        static void WriteLog(string content, string tag)
+        public static void WriteLog(string content, string tag)
         {
             log.WriteLine("[" + DateTime.Now.Date.ToString("MM/dd/yyyy HH:mm:ss") + "]"
                 + "[" + tag + "]: " + content);

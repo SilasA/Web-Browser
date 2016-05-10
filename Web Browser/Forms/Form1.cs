@@ -30,6 +30,7 @@ namespace Web_Browser
         #region Additional Forms
         Preferences _PreferencesForm;
         Bookmark _BookmarkForm;
+        BookmarkManager _BookmarkManager;
         #endregion
 
         /// <summary>
@@ -50,6 +51,14 @@ namespace Web_Browser
         {
             webBrowser.Navigate(FileHandler.HomepageURL);
             _currentUrl = FileHandler.HomepageURL;
+        }
+
+        /// <summary>
+        /// Actions for when the browser is closed.
+        /// </summary>
+        private void Browser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Logger.WriteFinalLog();
         }
 
         #region ToolStrip Menu
@@ -91,11 +100,21 @@ namespace Web_Browser
         }
 
         /// <summary>
-        /// 
+        /// Opens the new bookmark form.
         /// </summary>
         private void addBookmarkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _BookmarkForm = new Bookmark(ref _currentUrl);
+            _BookmarkForm = new Bookmark(_currentUrl);
+            _BookmarkForm.Show();
+        }
+
+        /// <summary>
+        /// Opens the bookmark manager form.
+        /// </summary>
+        private void bookmarkManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _BookmarkManager = new BookmarkManager();
+            _BookmarkManager.Show();
         }
         #endregion
 
@@ -149,6 +168,7 @@ namespace Web_Browser
             _currentUrl = webBrowser.Url.ToString();
             txtURL.Text = _currentUrl;
         }
+
         #endregion
     }
 }

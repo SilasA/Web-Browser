@@ -12,19 +12,28 @@ namespace Web_Browser
 {
     public partial class Bookmark : Form
     {
-        public Bookmark(ref string url)
-        {
-            InitializeComponent();
-            tmpUrl = url;
-        }
-
+        bool readMode = true;
         string tmpUrl;
 
         /// <summary>
-        /// 
+        /// Constructs the bookmark form with a specified url or none (user provides one).
+        /// </summary>
+        /// <param name="url"> The url of the page or default user specified url </param>
+        public Bookmark(string url = "")
+        {
+            InitializeComponent();
+
+            if (url != "") tmpUrl = url;
+            else readMode = false;
+        }
+
+        /// <summary>
+        /// Loads the url into the label.
         /// </summary>
         private void Bookmark_Load(object sender, EventArgs e)
         {
+            if (readMode) txtUrl.Text = tmpUrl;
+            txtUrl.ReadOnly = readMode;
         }
 
         /// <summary>
@@ -40,13 +49,15 @@ namespace Web_Browser
         /// </summary>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (tmpUrl == "") {} // Some error
-            if (txtName.Text == "") // If no name was entered
+            if (txtName.Text == "" || (!readMode && txtUrl.Text == "")) // If no name or url was entered
             {
                 MessageBox.Show("Please give the new bokmark a name!", "Bookmark");
                 return;
             }
-            BookmarkHandler.NewBookmark(ref tmpUrl, txtName.Text);
+            if (!readMode)
+                tmpUrl = txtUrl.Text; 
+            BookmarkHandler.NewBookmark(tmpUrl, txtName.Text);
+            this.Close();
         }
     }
 }

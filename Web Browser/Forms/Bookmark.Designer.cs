@@ -30,11 +30,11 @@
         {
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.lblURL = new System.Windows.Forms.Label();
             this.lblURLtitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.txtUrl = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -56,14 +56,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // lblURL
-            // 
-            this.lblURL.Location = new System.Drawing.Point(50, 35);
-            this.lblURL.Name = "lblURL";
-            this.lblURL.Size = new System.Drawing.Size(172, 15);
-            this.lblURL.TabIndex = 2;
-            this.lblURL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblURLtitle
             // 
@@ -99,20 +91,29 @@
             this.txtName.Size = new System.Drawing.Size(166, 20);
             this.txtName.TabIndex = 6;
             // 
+            // txtUrl
+            // 
+            this.txtUrl.Location = new System.Drawing.Point(56, 32);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.ReadOnly = true;
+            this.txtUrl.Size = new System.Drawing.Size(166, 20);
+            this.txtUrl.TabIndex = 7;
+            // 
             // Bookmark
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 136);
+            this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblURLtitle);
-            this.Controls.Add(this.lblURL);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Bookmark";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Bookmark";
             this.Load += new System.EventHandler(this.Bookmark_Load);
             this.ResumeLayout(false);
@@ -124,10 +125,10 @@
 
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Label lblURL;
         private System.Windows.Forms.Label lblURLtitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtUrl;
     }
 }

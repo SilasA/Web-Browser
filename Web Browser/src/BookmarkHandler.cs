@@ -13,7 +13,7 @@ namespace Web_Browser
         static StreamWriter sw;
         static StreamReader sr;
 
-        static uint currentIdxInFile = 0;
+        static int currentIdxInFile = -1;
         static bool foundName = false;
 
         // Bookmark Information
@@ -41,6 +41,8 @@ namespace Web_Browser
         /// </summary>
         static BookmarkHandler()
         {
+            bookmarkNames = new List<string>();
+            bookmarkUrls = new List<string>();
             GetData();
         }
 
@@ -58,10 +60,11 @@ namespace Web_Browser
         /// </summary>
         /// <param name="url"> Url of the new bookmark </param>
         /// <param name="name"> Name of the new bookmark </param>
-        public static void NewBookmark(ref string url, string name)
+        public static void NewBookmark(string url, string name)
         {
             bookmarkNames.Add(name);
             bookmarkUrls.Add(url);
+            currentIdxInFile++;
             SetData();
         }
 
@@ -83,7 +86,8 @@ namespace Web_Browser
                 }
                 itr++;
             }
-            // if (!foundName) // Log or something
+            if (foundName) currentIdxInFile--;
+            else Logger.WriteLog("Unable to find bookmark to delete.", "BMH");
         }
 
         /// <summary>
@@ -135,7 +139,7 @@ namespace Web_Browser
             catch (FileNotFoundException)
             {
                 MessageBox.Show(
-                    "Preference file not detected!\n Make sure that all necessary files are in the correct directory",
+                    "Bookmark file not detected!\n Make sure that all necessary files are in the correct directory",
                     "Warning");
                 return false;
             }
@@ -145,7 +149,7 @@ namespace Web_Browser
             {
                 sw.WriteLine(currentIdxInFile.ToString() + "------------------------------");
                 sw.WriteLine("name=" + name);
-                sw.WriteLine("url=" + bookmarkUrls[(int)currentIdxInFile]);
+                sw.WriteLine("url=" + bookmarkUrls[currentIdxInFile]);
             }
 
             // Close file
