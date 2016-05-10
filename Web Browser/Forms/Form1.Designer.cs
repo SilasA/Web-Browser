@@ -43,6 +43,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.pbLoaded = new System.Windows.Forms.ToolStripProgressBar();
             this.slLoaded = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnForward = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -178,12 +180,36 @@
             this.slLoaded.Size = new System.Drawing.Size(118, 17);
             this.slLoaded.Text = "toolStripStatusLabel1";
             // 
+            // btnForward
+            // 
+            this.btnForward.Enabled = false;
+            this.btnForward.Location = new System.Drawing.Point(739, 1);
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(35, 23);
+            this.btnForward.TabIndex = 5;
+            this.btnForward.Text = "->";
+            this.btnForward.UseVisualStyleBackColor = true;
+            this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Enabled = false;
+            this.btnBack.Location = new System.Drawing.Point(699, 1);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(35, 23);
+            this.btnBack.TabIndex = 6;
+            this.btnBack.Text = "<-";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // Browser
             // 
             this.AcceptButton = this.btnNavigate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btnForward);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.btnNavigate);
@@ -196,6 +222,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Browser_FormClosed);
             this.Load += new System.EventHandler(this.Browser_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Browser_KeyDown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -222,6 +249,8 @@
         private System.Windows.Forms.ToolStripMenuItem homePageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addBookmarkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bookmarkManagerToolStripMenuItem;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnForward;
     }
 }
 

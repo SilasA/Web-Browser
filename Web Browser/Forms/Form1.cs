@@ -60,6 +60,15 @@ namespace Web_Browser
         {
             Logger.WriteFinalLog();
         }
+        
+        /// <summary>
+        /// When any key is presses in the browser window.
+        /// </summary>
+        private void Browser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (IsInputKey(Keys.Back))
+                btnBackAction();
+        }
 
         #region ToolStrip Menu
         /// <summary>
@@ -126,7 +135,48 @@ namespace Web_Browser
             slLoaded.Text = "Loading...";
             btnNavigate.Enabled = false;
             txtURL.Enabled = false;
-            webBrowser.Navigate(txtURL.Text);
+            Navigate(txtURL.Text);
+        }
+
+        /// <summary>
+        /// Wrapper for browser navigation.
+        /// </summary>
+        /// <param name="url"></param>
+        private void Navigate(string url)
+        {
+            webBrowser.Navigate(url);
+        }
+        
+        /// <summary>
+        /// Wrapper for back button presses.
+        /// </summary>
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            btnBackAction();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            HistoryTracker.StepForward();
+            Navigate(HistoryTracker.UrlHistory[HistoryTracker.CurrentIdx]);
+
+            btnBack.Enabled = HistoryTracker.CheckLowerBound();
+            btnForward.Enabled = HistoryTracker.CheckUpperBound();
+        }
+
+        /// <summary>
+        /// Takes the browser back one url.
+        /// </summary>
+        private void btnBackAction()
+        {
+            HistoryTracker.StepBack();
+            Navigate(HistoryTracker.UrlHistory[HistoryTracker.CurrentIdx]);
+
+            btnBack.Enabled = HistoryTracker.CheckLowerBound();
+            btnForward.Enabled = HistoryTracker.CheckUpperBound();
         }
 
         #region Web Browser Events

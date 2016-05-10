@@ -34,6 +34,40 @@ namespace Web_Browser
         }
 
         /// <summary>
+        /// Sets the index back one url if there is one.
+        /// </summary>
+        /// <returns> If successful or not </returns>
+        public static bool StepBack()
+        {
+            if (!CheckLowerBound()) return false;
+            currentIdx--;
+            return true;
+        }
+
+        /// <summary>
+        /// Sets the index forward one url if there is one.
+        /// </summary>
+        /// <returns></returns>
+        public static bool StepForward()
+        {
+            if (!CheckUpperBound()) return false;
+            currentIdx++;
+            return true;
+        }
+
+        /// <returns> If there is another url preceeding the current one </returns>
+        public static bool CheckLowerBound()
+        {
+            return (currentIdx - 1 != -1);
+        }
+
+        /// <returns> If there is another url proceeding the current one </returns>
+        public static bool CheckUpperBound()
+        {
+            return (currentIdx != urlHistory.Count - 1);
+        }
+
+        /// <summary>
         /// Clears the current history.
         /// </summary>
         public static void ClearHistory()
